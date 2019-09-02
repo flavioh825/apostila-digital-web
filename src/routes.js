@@ -3,6 +3,11 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import { isAuthenticated } from './services/auth';
 
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import Home from './screens/Home';
+import Course from './components/Course';
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -19,9 +24,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={() => <h1>Login</h1>} />
-      <Route exact path="/signup" component={() => <h1>signup</h1>} />
-      <PrivateRoute path="/app" component={() => <h1>App</h1>} />
+      <Route exact path="/" component={Login} />
+      <Route exact path="/signup" component={SignUp} />
+      <PrivateRoute path="/home" component={Home} />
+      <PrivateRoute path="/cursos" component={Course} />
     </Switch>
   </BrowserRouter>
 );
